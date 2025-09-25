@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component ,OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { ProductService } from '../../../service/product/productService';
 
 @Component({
   selector: 'app-products',
@@ -8,7 +10,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './products.html',
   styleUrl: './products.css'
 })
-export class Products {
+export class Products implements OnInit{
   isSidePanelVisible : boolean = false;
 
   productObj : any =
@@ -23,6 +25,33 @@ export class Products {
   "deliveryTimeSpan": "",
   "categoryId": 0,
   "productImageUrl": ""
+}
+
+categoryList : any[] = [];
+
+constructor(private productSrv : ProductService){}
+
+ngOnInit(): void { 
+  this.getAllCategory();
+}
+
+getAllCategory() {
+  this.productSrv.getCategory().subscribe((res:any)=>{
+    console.log(res);
+    this.categoryList = res.data;
+  })
+}
+
+onSave() {
+  this.productSrv.saveProduct(this.productObj).subscribe((res:any)=>{
+    debugger;
+    if(res.result) {
+      alert('Product created successfully');
+    }
+    else {
+      alert(res.message);
+    }
+  })  
 }
 
   openSidePanel() {   

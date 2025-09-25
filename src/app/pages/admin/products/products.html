@@ -15,7 +15,7 @@
                 <div class="row">
                     <div class="col-3">
                         <div class="card">
-                            <img class="card-img-top" src="img_avatar1.png" alt="Card image">
+                            <!-- <img class="card-img-top" src="img_avatar1.png" alt="Card image"> -->
                             <div class="card-body">
                                 <h4 class="card-title">John Doe</h4>
                                 <p class="card-text">Some example text.</p>
@@ -25,7 +25,7 @@
                     </div>
                     <div class="col-3">
                         <div class="card">
-                            <img class="card-img-top" src="img_avatar1.png" alt="Card image">
+                            <!-- <img class="card-img-top" src="img_avatar1.png" alt="Card image"> -->
                             <div class="card-body">
                                 <h4 class="card-title">John Doe</h4>
                                 <p class="card-text">Some example text.</p>
@@ -35,7 +35,7 @@
                     </div>
                     <div class="col-3">
                         <div class="card">
-                            <img class="card-img-top" src="img_avatar1.png" alt="Card image">
+                            <!-- <img class="card-img-top" src="img_avatar1.png" alt="Card image"> -->
                             <div class="card-body">
                                 <h4 class="card-title">John Doe</h4>
                                 <p class="card-text">Some example text.</p>
@@ -83,7 +83,11 @@
                 <div class="row">
                     <div class="col-6">
                         <label for="">Category</label>
-                        <input type="text" [(ngModel)]="productObj.categoryId" class="form-control" />
+                        <select [(ngModel)]="productObj.categoryId" class="form-select">
+                            <ng-container *ngFor="let cate of categoryList">
+                                <option [value]="cate.categoryId">{{ cate.categoryName }}</option>
+                            </ng-container>
+                        </select>
                     </div>
                     <div class="col-6">
                         <label for="">Delivery Time Span</label>
@@ -100,6 +104,14 @@
                     <div class="col-12">
                         <label for="">Product Description</label>
                         <textarea rows="4" [(ngModel)]="productObj.productDescription" class="form-control"></textarea>
+                    </div>
+                </div>
+                 <div class="row">
+                    <div class="col-6">
+                      <button class="btn btn-success">Reset</button>
+                    </div>
+                    <div class="col-6">
+                       <button class="btn btn-success" (click)="onSave()">Create Product</button>
                     </div>
                 </div>
             </div>
