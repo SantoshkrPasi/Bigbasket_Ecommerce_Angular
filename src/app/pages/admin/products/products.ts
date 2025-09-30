@@ -28,11 +28,20 @@ export class Products implements OnInit{
 }
 
 categoryList : any[] = [];
+productsList : any[] = [];
 
 constructor(private productSrv : ProductService){}
 
 ngOnInit(): void { 
   this.getAllCategory();
+  this.getProducts();
+}
+
+getProducts() {
+  this.productSrv.getProducts().subscribe((res:any)=>{
+    console.log(res);
+    this.productsList = res.data;
+  })
 }
 
 getAllCategory() {
@@ -47,6 +56,7 @@ onSave() {
     debugger;
     if(res.result) {
       alert('Product created successfully');
+      this.getProducts();
     }
     else {
       alert(res.message);

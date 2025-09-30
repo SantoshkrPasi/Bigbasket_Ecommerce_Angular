@@ -12,33 +12,13 @@
                 </div>
             </div>
             <div class="card-body">
-                <div class="row">
-                    <div class="col-3">
+                <div class="row">                   
+                    <div class="col-3" *ngFor="let product of productsList">
                         <div class="card">
-                            <!-- <img class="card-img-top" src="img_avatar1.png" alt="Card image"> -->
+                            <img class="card-img-top" [src] ="product.productImageUrl" alt="Card image">
                             <div class="card-body">
-                                <h4 class="card-title">John Doe</h4>
-                                <p class="card-text">Some example text.</p>
-                                <a href="#" class="btn btn-primary">See Profile</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="card">
-                            <!-- <img class="card-img-top" src="img_avatar1.png" alt="Card image"> -->
-                            <div class="card-body">
-                                <h4 class="card-title">John Doe</h4>
-                                <p class="card-text">Some example text.</p>
-                                <a href="#" class="btn btn-primary">See Profile</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="card">
-                            <!-- <img class="card-img-top" src="img_avatar1.png" alt="Card image"> -->
-                            <div class="card-body">
-                                <h4 class="card-title">John Doe</h4>
-                                <p class="card-text">Some example text.</p>
+                                <h4 class="card-title">{{product.productName}}</h4>
+                                <p class="card-text">{{product.categoryName}}</p>
                                 <a href="#" class="btn btn-primary">See Profile</a>
                             </div>
                         </div>
@@ -60,7 +40,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <div class="row">
+                 <div class="row">
                     <div class="col-6">
                         <label for="">SKU</label>
                         <input type="text" [(ngModel)]="productObj.productSku" class="form-control" />
