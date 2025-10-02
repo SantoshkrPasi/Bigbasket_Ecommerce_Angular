@@ -51,6 +51,35 @@ getAllCategory() {
   })
 }
 
+onUpdate() {
+this.productSrv.updateProduct(this.productObj).subscribe((res:any)=>{
+    debugger;
+    if(res.result) {
+      alert('Product updated successfully');
+      this.getProducts();
+    }
+    else {
+      alert(res.message);
+    }
+  }) 
+}
+
+onDelete(item: any) {
+ const isDelete = confirm("Are you sure want to delete ");  
+  if(isDelete) {
+    this.productSrv.deleteProduct(item.productId).subscribe((res:any)=>{
+      debugger;
+      if(res.result) {
+        alert('Product deleted successfully');
+        this.getProducts();
+      }   
+      else {
+        alert(res.message);
+      } 
+    })
+  }
+}
+
 onSave() {
   this.productSrv.saveProduct(this.productObj).subscribe((res:any)=>{
     debugger;
@@ -62,6 +91,11 @@ onSave() {
       alert(res.message);
     }
   })  
+}
+
+onEdit(item: any) {   
+  this.productObj = item;
+  this.openSidePanel();
 }
 
   openSidePanel() {   

@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { Login } from './pages/admin/login/login';
 import { Layout } from './pages/admin/layout/layout';
 import { Products } from './pages/admin/products/products';
+import { Categories } from './pages/admin/categories/categories';
 
 export const routes: Routes = [
     {
@@ -16,9 +17,15 @@ export const routes: Routes = [
     {
         path: '',
         component: Layout,
-        children: [{
+        children: [
+            {
             path: 'products',
             component: Products,
-        }]
+            },
+            {
+                path: 'category',
+                component :Categories,
+            }    
+    ]
     }
 ];
