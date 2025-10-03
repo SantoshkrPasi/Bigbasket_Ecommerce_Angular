@@ -1,0 +1,13 @@
+.btn-cart {
+  background-color: #8cc63f;   /* BigBasket green */
+  border: 2px solid #6aa84f;   /* visible border */
+  color: #fff;                 /* white text */
+  font-weight: 600;
+  font-size: 0.8rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-cart:hover {
+  background-color: #2d8464;   /* darker on hover */
+  border-color: #5a9c3b;
+}
