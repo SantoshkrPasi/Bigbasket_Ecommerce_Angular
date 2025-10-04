@@ -1,1 +1,47 @@
-<p>category-products works!</p>
+<!-- Products Section -->
+<section class="container pb-5">
+    <div class="row g-4">
+        <!-- Hero Section -->
+        <section class="hero text-center py-5">
+            <h2 class="fw-bold text-success">Bestseller Products</h2>
+            <p class="text-muted">
+                Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks
+                reasonable.
+            </p>
+        </section>
+        <!-- Product 1 -->
+        <div class="row g-4">
+            <div class="col-lg-6 col-xl-4" *ngFor="let product of products">
+                <div class="p-4 rounded bg-light">
+                    <div class="row align-items-center">
+
+                        <!-- Product Image -->
+                        <div class="col-6">
+                            <img [src]="product.productImageUrl" class="img-fluid rounded-circle w-100"
+                                alt="{{product.productName}}">
+                        </div>
+
+                        <!-- Product Info -->
+                        <div class="col-6">
+                            <!-- Product Name -->
+                            <a href="#" class="h5 d-block mb-2">{{ product.productName }}</a>
+
+                            <!-- Rating -->
+                            <div class="d-flex my-3">
+                                <i class="fas fa-star text-primary" *ngFor="let star of [1,2,3,4,5]"></i>
+                            </div>
+
+                            <!-- Price -->
+                            <h4 class="mb-3">{{ product.productPrice}} $</h4>
+
+                            <!-- Add to Cart -->
+                            <a href="#" class="btn btn-sm rounded-pill px-3 btn-cart">
+                                <i class="fa fa-shopping-bag me-2"></i> Add to cart
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
